@@ -1,0 +1,27 @@
+package firsttestcode;
+
+import java.util.HashMap;
+
+public class stringcompression {
+		
+    public String compressString(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        
+        for (char c : s.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        
+        StringBuilder compressedString = new StringBuilder();
+        for (char c : map.keySet()) {
+            compressedString.append(c).append(map.get(c));
+        }
+        
+        return compressedString.toString();
+    }
+    
+    public static void main(String[] args) {
+        stringcompression stringCompressor = new stringcompression();
+        String compressedString = stringCompressor.compressString("abbbbbbbbbb");
+        System.out.println("Compressed String: " + compressedString);
+    }
+}
